@@ -2,49 +2,111 @@
 <html lang="es">
     <head>
         <!-- ========== METADATOS ========== -->
-         <meta charset="UTF-8">
-         <meta name="viewport" content="width=device-width initial-scale=1.0">
-         <meta name="author" content="Julio Cevallos">
-         <meta name="description" content="Fotografía Digital">
-         <meta name="keywords" content="HTML, CSS, FOTOGRAFIA, DIGITAL">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="author" content="Julio Cevallos">
+        <meta name="description" content="Práctica: Maquetación y estilos - Fotografía Digital">
+        <meta name="keywords" content="HTML, CSS, FOTOGRAFIA, DIGITAL">
 
-        <!-- ========== PESTAÑA ========== -->
-        <title> Fotografía Digital </title>
-        <link rel="icon" hre="assets/img/camara-digital.png">
+        <!-- ========== TITULO - ESTILO ========== -->
+        <title>Práctica Maquetación - Fotografía Digital</title>
         <link rel="stylesheet" href="assets/css/style.css">
     </head>
 
     <body>
-        <!-- ========== CABECERA DE LA PÁGINA ========== -->
-        <div class="cabecera">
-            <!-- ========== TITULO - TEXTO ========== -->
-            <header>
+        <!-- ========== HEADER FIJO========== -->
+        <header class="site-header">
+            <div class="header-inner">
+                <!-- ========== LOGO - TITULO ========== -->
+                <div class="logo">
+                    <img src="assets/img/camara-digital.png" alt="Cámara" class="logo-img">
+                    <h1>Fotografía Digital</h1>
+                </div>
 
-            </header>
-
-            <!-- ========== NAVEGADOR ========== -->
-            <nav>
-                <ul>
-                    <li><a href="assets/pages/tecnicas.html"> Técnicas Básicas</a></li>
-                    <li><a href="assets/pages/composicion.html"> Composición </a></li>
-                    <li><a href="assets/pages/camaras.html"> Tipos de Cámara</a></li>
-                    <li><a href="assets/pages/software.html"> Edición con Software </a></li>
-                </ul>
-            </nav>
-        </div>
+                <!-- ========== BARRA DE NAVEGACION ========== -->
+                <nav class="main-nav" aria-label="Navegación principal">
+                    <ul>
+                        <li><a href="#">Técnicas</a></li>
+                        <li><a href="#">Composición</a></li>
+                        <li><a href="#">Tipos de cámaras</a></li>
+                        <li><a href="#">Edición</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
 
         <!-- ========== CONTENIDO PRINCIPAL ========== -->
-        <main>
+        <main class="container">
+            <!-- Sección introductoria (usa selector por id #intro) -->
+            <section id="intro" class="intro">
+                <h2>Bienvenido al taller — Fotografía Digital</h2>
+                <p>
+                    En este proyecto aprenderás fundamentos de exposición, composición, tipos de cámaras y edición.
+                    Esta página cumple los requisitos de la práctica: encabezado fijo, 3 columnas, posicionamiento controlado, animaciones y responsive.
+                </p>
+            </section>
 
+            <!-- Sección con 3 columnas (cada columna es un article con clase .card) -->
+            <section class="grid">
+                <!-- Columna 1 -->
+                <article class="card">
+                    <figure class="card-media">
+                        <img src="assets/img/camara-digital.png" alt="Imagen técnica" />
+                        <!-- Badge posicionado absolute INSIDE del contenedor relativo (ejemplo de relative/absolute controlado) -->
+                        <span class="badge">Técnica</span>
+                    </figure>
+
+                    <div class="card-body">
+                        <h3>Técnicas Básicas</h3>
+                        <p>Controla velocidad, apertura e ISO para lograr la exposición deseada. Practica con luz natural y artificial.</p>
+                    </div>
+
+                </article>
+
+                <!-- Columna 2 -->
+                <article class="card">
+                    <figure class="card-media">
+                        <img src="assets/img/camara-digital.png" alt="Imagen composición" />
+                        <span class="badge">Composición</span>
+                    </figure>
+                    <div class="card-body">
+                        <h3>Composición</h3>
+                        <p>Regla de los tercios, líneas guía y uso del espacio negativo para crear imágenes equilibradas e impactantes.</p>
+
+                        <!-- Contenedor relativo con un botón posicionado absolute (ejemplo padre-relative / hijo-absolute) -->
+                        <div class="cta-wrap">
+                            <button id="ver-mas" class="btn">Ver más</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Columna 3 -->
+                <article class="card">
+                    <figure class="card-media">
+                        <img src="assets/img/camara-digital.png" alt="Imagen cámaras" />
+                        <span class="badge">Cámaras</span>
+                    </figure>
+                    <div class="card-body">
+                        <h3>Tipos de Cámara</h3>
+                        <p>Compactas, bridge, réflex y mirrorless: aprende sus ventajas y limitaiones para elegir la correcta.</p>
+                    </div>
+                </article>
+            </section>
         </main>
 
+        <!-- ========== ICONO FLOTANTE ========== -->
+        <a href="#top" id="float-icon" aria-label="Volver arriba">
+            <img src="assets/img/camara-digital.png" alt="Icono flotante" />
+        </a>
+
         <!-- ========== PIE DE PAGINA ========== -->
-        <footer>
-            <p> Desarrollado por: jlcevall
-                <a href="mailto: jujoceva@espol.edu.ec"> Correo </a> | 
-                <a href="tel:+593992300774"> Telefono</a>
+        <footer class="site-footer">
+            <p>
+                Desarrollado por: jlcevall <br>
+                <a href="mailto:jujoceva@espol.edu.ec">Correo</a> || <a href="tel:+593992300774">Teléfono</a>
             </p>
-            <p> © - 2025 pagina de practicas académicas | ESPOL</p>
+            <p>© 2025 - Práctica de Maquetación y Estilos - SOFG1006</p>
         </footer>
+
     </body>
 </html>
