@@ -1,112 +1,107 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <!-- ========== METADATOS ========== -->
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="author" content="Julio Cevallos">
-        <meta name="description" content="Práctica: Maquetación y estilos - Fotografía Digital">
-        <meta name="keywords" content="HTML, CSS, FOTOGRAFIA, DIGITAL">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio Fotográfico</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <!-- Header fijo -->
+    <header>
+        <h1>Portafolio Fotográfico</h1>
+    </header>
 
-        <!-- ========== TITULO - ESTILO ========== -->
-        <title>Práctica Maquetación - Fotografía Digital</title>
-        <link rel="stylesheet" href="assets/css/style.css">
-    </head>
+    <!-- Barra de navegación -->
+    <nav>
+        <ul>
+            <li><a href="#tecnicas"> Técnicas Básicas</a></li>
+            <li><a href="#composicion"> Composición </a></li>
+            <li><a href="#software"> Edición con Software</a></li>
+            <li><a href="#camaras"> Tipos de Cámaras </a></li>
+        </ul>
+    </nav>
 
-    <body>
-        <!-- ========== HEADER FIJO========== -->
-        <header class="site-header">
-            <div class="header-inner">
-                <!-- ========== LOGO - TITULO ========== -->
-                <div class="logo">
-                    <img src="assets/img/camara-digital.png" alt="Cámara" class="logo-img">
-                    <h1>Fotografía Digital</h1>
-                </div>
-
-                <!-- ========== BARRA DE NAVEGACION ========== -->
-                <nav class="main-nav" aria-label="Navegación principal">
-                    <ul>
-                        <li><a href="#">Técnicas</a></li>
-                        <li><a href="#">Composición</a></li>
-                        <li><a href="#">Tipos de cámaras</a></li>
-                        <li><a href="#">Edición</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </header>
-
-        <!-- ========== CONTENIDO PRINCIPAL ========== -->
-        <main class="container">
-            <!-- Sección introductoria (usa selector por id #intro) -->
-            <section id="intro" class="intro">
-                <h2>Bienvenido al taller — Fotografía Digital</h2>
+    <!-- Contenido principal -->
+    <main>
+        <!-- Sección con tres columnas -->
+        <div class="columnas">
+            <div id="tecnicas" class="columna contenedor">
+                <span class="badge">Nuevo</span>
+                <img src="assets/img/camara-de-accion.png" 
+                     alt="Paisaje montañoso" 
+                     class="imagen-destacada">
+                <h2> Técnicas Básicas </h2>
                 <p>
-                    En este proyecto aprenderás fundamentos de exposición, composición, tipos de cámaras y edición.
-                    Esta página cumple los requisitos de la práctica: encabezado fijo, 3 columnas, posicionamiento controlado, animaciones y responsive.
+                    Las técnicas básicas de fotografía incluyen el control de la exposición, el enfoque y la composición. 
+                    Dominar estos aspectos permite capturar imágenes más claras, equilibradas y expresivas.
                 </p>
-            </section>
+            </div>
 
-            <!-- Sección con 3 columnas (cada columna es un article con clase .card) -->
-            <section class="grid">
-                <!-- Columna 1 -->
-                <article class="card">
-                    <figure class="card-media">
-                        <img src="assets/img/camara-digital.png" alt="Imagen técnica" />
-                        <!-- Badge posicionado absolute INSIDE del contenedor relativo (ejemplo de relative/absolute controlado) -->
-                        <span class="badge">Técnica</span>
-                    </figure>
+            <div id="composicion" class="columna">
+                <img src="assets/img/foto.png" 
+                     alt="Ciudad nocturna" 
+                     class="imagen-destacada">
+                <h2> Composición </h2>
+                <p>
+                    La composición fotográfica consiste en organizar los elementos dentro del encuadre para crear 
+                    equilibrio visual. Reglas como la de los tercios o el uso de líneas guía ayudan a dirigir la 
+                    atención del espectador.
+                </p>
+            </div>
 
-                    <div class="card-body">
-                        <h3>Técnicas Básicas</h3>
-                        <p>Controla velocidad, apertura e ISO para lograr la exposición deseada. Practica con luz natural y artificial.</p>
-                    </div>
+            <div id="software" class="columna">
+                <img src="assets/img/edicion-de-fotos.png" 
+                     alt="Retrato artístico" 
+                     class="imagen-destacada">
+                <h2> Edición con Software </h2>
+                <p> 
+                    La edición digital permite ajustar el color, brillo, contraste y otros detalles de una imagen. 
+                    Programas como Lightroom o Photoshop ayudan a mejorar la calidad y transmitir la intención del 
+                    fotógrafo.
+                </p>
+            </div>
+        </div>
 
-                </article>
-
-                <!-- Columna 2 -->
-                <article class="card">
-                    <figure class="card-media">
-                        <img src="assets/img/camara-digital.png" alt="Imagen composición" />
-                        <span class="badge">Composición</span>
-                    </figure>
-                    <div class="card-body">
-                        <h3>Composición</h3>
-                        <p>Regla de los tercios, líneas guía y uso del espacio negativo para crear imágenes equilibradas e impactantes.</p>
-
-                        <!-- Contenedor relativo con un botón posicionado absolute (ejemplo padre-relative / hijo-absolute) -->
-                        <div class="cta-wrap">
-                            <button id="ver-mas" class="btn">Ver más</button>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Columna 3 -->
-                <article class="card">
-                    <figure class="card-media">
-                        <img src="assets/img/camara-digital.png" alt="Imagen cámaras" />
-                        <span class="badge">Cámaras</span>
-                    </figure>
-                    <div class="card-body">
-                        <h3>Tipos de Cámara</h3>
-                        <p>Compactas, bridge, réflex y mirrorless: aprende sus ventajas y limitaiones para elegir la correcta.</p>
-                    </div>
-                </article>
-            </section>
-        </main>
-
-        <!-- ========== ICONO FLOTANTE ========== -->
-        <a href="#top" id="float-icon" aria-label="Volver arriba">
-            <img src="assets/img/camara-digital.png" alt="Icono flotante" />
-        </a>
-
-        <!-- ========== PIE DE PAGINA ========== -->
-        <footer class="site-footer">
+        <section id="camaras">
+            <h2> Tipos de Cámaras </h2>
             <p>
-                Desarrollado por: jlcevall <br>
-                <a href="mailto:jujoceva@espol.edu.ec">Correo</a> || <a href="tel:+593992300774">Teléfono</a>
+                Existen diversos tipos de cámaras, desde las réflex y sin espejo hasta las compactas y de acción. 
+                Cada una ofrece ventajas según el nivel de experiencia y el tipo de fotografía que se desee realizar.
             </p>
-            <p>© 2025 - Práctica de Maquetación y Estilos - SOFG1006</p>
-        </footer>
+            <p>
+                Las cámaras réflex digitales (DSLR) se caracterizan por su visor óptico y la posibilidad de intercambiar 
+                lentes, lo que brinda un alto nivel de control y calidad profesional. En cambio, las cámaras sin espejo 
+                ofrecen un diseño más compacto y liviano, manteniendo una excelente calidad de imagen y grabación en alta
+                 resolución.
+            </p>
 
-    </body>
+            <p>
+                Por otro lado, las cámaras compactas y las de acción son ideales para quienes buscan portabilidad y facilidad 
+                de uso. Las cámaras de los teléfonos inteligentes también han avanzado notablemente, integrando sensores de alta 
+                resolución y funciones de inteligencia artificial que facilitan capturar fotografías impresionantes sin necesidad 
+                de equipos especializados.
+            </p>
+
+            <div class="tipoCamara">
+                <img src="assets/img/tipo-camaras.png" alt="tipos_camaras" widht="700" height="560">
+            </div>
+        </section>
+    </main>
+
+
+    <!-- Ícono flotante posicionado de forma absoluta -->
+    <div id="icono-flotante">
+        <img src="assets/img/camara-digital.png" alt="icono-flotante" width="45" height="45">
+    </div>
+
+    <!-- Pie de página -->
+    <footer>
+        <p> Desarrollado por: jlcevall <br>
+            <a href="mailto: jujoceva@espol.edu.ec"> Correo </a> |  | 
+            <a href="tel:+593992300774"> Telefono</a>
+        </p>
+        <p> © - 2025 pagina de practicas académicas | ESPOL</p>
+    </footer>
+</body>
 </html>

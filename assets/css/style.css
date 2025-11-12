@@ -1,341 +1,217 @@
-/* ================================
-   style.css - Estilos para la práctica
-   Cumple: header fijo, nav hover, 3 columnas, posicionamiento relative/absolute,
-   modelo de cajas, :hover + transition, animation (transform + transition),
-   ícono flotante absolute, media queries, selectores por etiqueta/clase/id/combinados.
-   ================================ */
-
-/* ----------------------------
-   RESETS BÁSICOS (mínimos)
-   ---------------------------- */
+/* Selectores de etiqueta */
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
-html, body {
-  height: 100%;
-  margin: 0;
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  background: #faf9f8;
-  color: #222;
-  -webkit-font-smoothing: antialiased;
-}
-
-/* ----------------------------
-   HEADER FIJO (selector por etiqueta: header)
-   ---------------------------- */
-.site-header {
-  position: fixed;      /* encabezado fijo */
-  top: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(90deg, #0f1724 0%, #1e293b 100%);
-  color: #fff;
-  z-index: 9999;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-}
-
-/* Contenido interno del header: selector combinado header .header-inner */
-.header-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 12px 20px;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
-/* Logo (selector combinado: header .logo) */
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.logo-img {
-  width: 48px;
-  height: 48px;
-  object-fit: contain;
-  border-radius: 6px;
-  background: #fff; /* para que el icono se vea sobre el fondo oscuro */
-  padding: 6px;
-}
-
-/* Título dentro del header (selector por etiqueta combinado): header .logo h1 */
-.logo h1 {
-  font-size: 1.1rem;
-  margin: 0;
-  letter-spacing: 0.6px;
-}
-
-/* ----------------------------
-   BARRA DE NAVEGACIÓN (selector por clase)
-   ---------------------------- */
-.main-nav ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  gap: 6px;
-}
-
-.main-nav a {
-  display: inline-block;
-  padding: 10px 14px;
-  color: #f8fafc;
-  text-decoration: none;
-  border-radius: 6px;
-  transition: background-color 0.25s ease, color 0.25s ease, transform 0.15s ease;
-  font-weight: 600;
-}
-
-/* Cambio de tema en hover (requisito del PDF) */
-.main-nav a:hover,
-.main-nav a:focus {
-  background-color: #ff7a18;   /* color de tema al hacer hover */
-  color: #050505;
-  transform: translateY(-2px);
-}
-
-/* ----------------------------
-   ESPACIO PARA EL CONTENIDO (para evitar estar bajo el header fijo)
-   ---------------------------- */
-.container {
-  max-width: 1100px;
-  margin: 120px auto 40px; /* deja espacio superior para header fijo */
-  padding: 0 16px;
-}
-
-/* Intro (selector por id: #intro) */
-#intro {
-  margin-bottom: 18px;
-  background: linear-gradient(180deg, #ffffffcc, #ffffffcc);
-  padding: 18px;
-  border-radius: 8px;
-  border: 1px solid rgba(0,0,0,0.05);
-  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
-}
-
-/* ----------------------------
-   GRID DE 3 COLUMNAS (modelo de cajas aplicado)
-   ---------------------------- */
-.grid {
-  display: flex;
-  gap: 18px;
-  align-items: flex-start;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-
-/* Tarjetas / columnas (selector por clase .card) */
-.card {
-  background: #fff;
-  border: 1px solid #d6d6d6;      /* modelo de cajas: border */
-  border-radius: 10px;            /* bordes redondeados */
-  padding: 14px;                  /* padding */
-  width: calc(33.333% - 12px);    /* 3 columnas (con separación) */
-  min-height: 260px;              /* height de tarjeta */
-  box-shadow: 0 6px 12px rgba(16,24,40,0.06);
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
-}
-
-/* Hover en la tarjeta: efecto + transición (requisito) */
-.card:hover {
-  transform: translateY(-8px) scale(1.01); /* transform + transition */
-  box-shadow: 0 10px 22px rgba(16,24,40,0.12);
-  border-color: #ff7a18;
-}
-
-/* ----------------------------
-   MEDIA (imagen) dentro de la tarjeta
-   ---------------------------- */
-/* Contenedor relativo para demostrar parent-relative (selector por clase .card-media) */
-.card-media {
-  position: relative; /* <-- esto crea CONTEXTO para elementos absolute dentro */
-  overflow: hidden;
-  border-radius: 8px;
-  margin-bottom: 12px;
-  height: 140px;
-}
-
-.card-media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transform-origin: center center;
-  transition: transform 0.6s ease; /* animación suave al hover */
-}
-
-/* Hover sobre media: ligera escala (transform + transition) */
-.card:hover .card-media img {
-  transform: scale(1.06);
-}
-
-/* ----------------------------
-   BADGE (elemento hijo absolute dentro de .card-media)
-   Ejemplo claro de position: absolute controlado por parent position: relative.
-   ---------------------------- */
-.badge {
-  position: absolute;   /* elemento absolute */
-  top: 10px;
-  left: 10px;
-  background: rgba(0,0,0,0.6);
-  color: #fff;
-  padding: 6px 10px;
-  border-radius: 20px;
-  font-size: 0.85rem;
-  font-weight: 700;
-  letter-spacing: 0.3px;
-}
-
-/* ----------------------------
-   CUERPO DE LA TARJETA
-   ---------------------------- */
-.card-body {
-  flex: 1 1 auto;
-  display: flex;
-  flex-direction: column;
-}
-
-.card-body h3 {
-  margin: 0 0 8px 0;
-  font-size: 1.05rem;
-}
-
-.card-body p {
-  margin: 0 0 12px 0;
-  line-height: 1.45;
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f4;
   color: #333;
 }
 
-/* ----------------------------
-   CTA: contenedor relativo y botón absolute (otro ejemplo)
-   .cta-wrap es padre relativo; #ver-mas es hijo absolute
-   ---------------------------- */
-.cta-wrap {
-  position: relative;   /* padre con position: relative (contexto) */
-  height: 50px;
-  margin-top: auto;     /* empuja el CTA al final del card-body */
+p{
+  text-align: justify;
 }
 
-/* Botón posicionado absolute dentro de .cta-wrap (selector por id = requisito) */
-#ver-mas {
-  position: absolute;   /* hijo absolute */
-  right: 0;
-  bottom: 0;
-  background: #ff7a18;
-  border: none;
-  color: #050505;
-  padding: 10px 14px;
+/* Header fijo */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #2c3e50;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* Barra de navegación */
+nav {
+  position: fixed;
+  top: 80px;
+  width: 100%;
+  background-color: #34495e;
+  padding: 15px 0;
+  z-index: 999;
+  transition: background-color 0.3s ease;
+}
+
+/* Cambio de tema al hacer hover en navegación */
+nav:hover {
+  background-color: #16a085;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #f39c12;
+}
+
+/* Contenido principal */
+main {
+  margin-top: 150px;
+  padding: 20px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Selector de clase - Contenedor de columnas */
+.columnas {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+/* Selector de clase - Cada columna */
+.columna {
+  flex: 1;
+  background-color: white;
+  padding: 25px;
   border-radius: 8px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.12s ease;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  /* Modelo de cajas aplicado */
+  margin: 10px;
+  border: 2px solid #ecf0f1;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Efecto hover del botón (transition + transform) */
-#ver-mas:hover {
-  background: #ff8f3d;
-  transform: translateY(-3px) scale(1.02);
+/* Efecto hover en tarjetas */
+.columna:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0,0,0,0.2);
 }
 
-/* ----------------------------
-   ICONO FLOTANTE (posicionado absolute dentro de la ventana)
-   Selector por id #float-icon
-   ---------------------------- */
-#float-icon {
-  position: fixed; /* fijado a la ventana */
-  right: 18px;
-  bottom: 18px;
-  width: 64px;
-  height: 64px;
-  display: inline-flex;
+.columna h2 {
+  color: #2c3e50;
+  margin-bottom: 15px;
+}
+
+/* Selector de ID - Ícono flotante */
+#icono-flotante {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  background-color: #e74c3c;
+  border-radius: 50%;
+  display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(180deg, #ff8a2b, #ff6a00);
-  border-radius: 50%;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.18);
-  text-decoration: none;
-  transition: transform 0.6s cubic-bezier(.2,.9,.3,1), box-shadow 0.25s ease;
-  z-index: 9999;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  /* Animación con transform + transition */
+  transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
-/* Imagen dentro del icono flotante */
-#float-icon img {
-  width: 44px;
-  height: 44px;
-  object-fit: contain;
+#icono-flotante:hover {
+  transform: rotate(360deg) scale(1.2);
+  background-color: #c0392b;
 }
 
-/* Rotación suave al hover (animación con transform) */
-#float-icon:hover {
-  transform: rotate(360deg) scale(1.06);
-  box-shadow: 0 10px 28px rgba(0,0,0,0.22);
+/* Imagen responsiva */
+.imagen-destacada {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-bottom: 15px;
 }
 
-/* ----------------------------
-   FOOTER
-   ---------------------------- */
-.site-footer {
+.tipoCamara img{
+  max-width:100%;
+  height:auto;
+}
+
+/* Posicionamiento absoluto dentro de relativo */
+.contenedor {
+  position: relative;
+}
+
+.badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #f39c12;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* Footer */
+footer {
+  background-color: #2c3e50;
+  color: white;
   text-align: center;
-  padding: 22px 12px;
-  background: #0b1220;
-  color: #e6eef8;
-  margin-top: 32px;
+  padding: 30px;
+  margin-top: 40px;
 }
 
-/* Enlaces en footer (selector combinado) */
-.site-footer a {
-  color: #ffd9b5;
-  text-decoration: none;
+footer p{
+  text-align: center;
 }
 
-/* ----------------------------
-   ANIMACIÓN SIMPLE (keyframes) usada para aparecer las tarjetas
-   (requisito: animación con transform + transition)
-   ---------------------------- */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(18px) scale(0.995); }
-  to   { opacity: 1; transform: translateY(0) scale(1); }
+footer a{
+  color:#16a085;
 }
 
-/* Aplicación de la animación a las tarjetas (cada una se anima al cargar) */
-.card {
-  animation: fadeUp 520ms ease both;
+/* Media Queries para dispositivos móviles */
+@media (max-width: 768px) {
+  .columnas {
+    flex-direction: column;
+  }
+
+  .columna {
+    margin: 10px 0;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+
+  /* Ajuste de imagen en móvil */
+  .imagen-destacada {
+    height: 150px;
+  }
+
+  /* Ajuste de texto en móvil */
+  .columna p {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  #icono-flotante {
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+  }
 }
 
-/* ----------------------------
-   RESPONSIVE (media queries)
-   Debe adaptar diseño a móviles: imagen y presentación de texto
-   ---------------------------- */
-@media (max-width: 900px) {
-  .card { width: calc(50% - 12px); }  /* 2 columnas en tablets */
-  .header-inner { padding: 12px; }
+/* Selector combinado - párrafos dentro de columnas */
+.columna p {
+  line-height: 1.8;
+  color: #555;
 }
-
-@media (max-width: 600px) {
-  .header-inner { flex-direction: column; gap: 8px; align-items: flex-start; }
-  .main-nav ul { flex-direction: row; flex-wrap: wrap; gap: 6px; }
-  .logo h1 { font-size: 1rem; }
-
-  /* 1 columna en móviles */
-  .card { width: 100%; }
-
-  /* Ajustes en imagen para móvil (requisito: aplicar a imagen) */
-  .card-media { height: 190px; }
-
-  /* CTA: ajusta botón para que esté visible en móvil */
-  #ver-mas { position: static; margin-top: 12px; transform: none; display: inline-block; }
-  .cta-wrap { height: auto; }
-}
-
-/* ----------------------------
-   EJEMPLO DE SELECTORES USADOS (para cumplir requisitos):
-   - Selector por etiqueta: header, footer
-   - Selector por clase: .card, .main-nav, .badge
-   - Selector por id: #ver-mas, #float-icon, #intro
-   - Selectores combinados: .header-inner .logo, .card:hover .card-media img
-   ---------------------------- */
