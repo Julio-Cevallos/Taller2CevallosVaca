@@ -178,6 +178,23 @@ footer a{
 
 /* Media Queries para dispositivos móviles */
 @media (max-width: 768px) {
+  /* Ajuste del header en móvil */
+  header {
+    padding: 15px;
+    font-size: 14px;
+  }
+
+  /* Ajuste del nav en móvil */
+  nav {
+    top: 60px;
+    padding: 10px 0;
+  }
+
+  /* Ajuste del main para que no quede tapado */
+  main {
+    margin-top: 180px;
+  }
+
   .columnas {
     flex-direction: column;
   }
